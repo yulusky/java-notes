@@ -64,11 +64,11 @@ man 是 manual 的缩写，将指令的具体信息显示出来。
 
 当执行 `man date` 时，有 DATE(1) 出现，其中的数字代表指令的类型，常用的数字及其类型如下：
 
-| 代号 | 类型 |
-| :--: | -- |
-| 1 | 用户在 shell 环境中可以操作的指令或者可执行文件 |
-| 5 | 配置文件 |
-| 8 | 系统管理员可以使用的管理指令 |
+| 代号 | 类型                                            |
+| :--: | ----------------------------------------------- |
+|  1   | 用户在 shell 环境中可以操作的指令或者可执行文件 |
+|  5   | 配置文件                                        |
+|  8   | 系统管理员可以使用的管理指令                    |
 
 3. info
 
@@ -225,6 +225,7 @@ cp [-adfilprsu] source destination
 ```html
 rm [-fir] 文件或目录
 -r ：递归删除
+
 ```
 
 8. mv
@@ -235,6 +236,7 @@ rm [-fir] 文件或目录
 mv [-fiu] source destination
 mv [options] source1 source2 source3 .... directory
 -f ： force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖
+
 ```
 
 ## 修改权限
@@ -243,12 +245,14 @@ mv [options] source1 source2 source3 .... directory
 
 ```html
 chmod [-R] xyz dirname/filename
+
 ```
 
 示例：将 .bashrc 文件的权限修改为 -rwxr-xr--。
 
 ```html
 chmod 754 .bashrc
+
 ```
 
 也可以使用符号来设定权限。
@@ -262,12 +266,14 @@ chmod [ugoa]  [+-=] [rwx] dirname/filename
 - +：添加权限
 - -：移除权限
 - =：设定权限
+
 ```
 
 示例：为 .bashrc 文件的所有用户添加写权限。
 
 ```html
 chmod a+w .bashrc
+
 ```
 
 ## 默认权限
@@ -286,10 +292,12 @@ chmod a+w .bashrc
 ## 链接
 
 <div align="center"> <img src="pics/1e46fd03-0cda-4d60-9b1c-0c256edaf6b2.png" width="450px"> </div><br>
+
 ```html
 ln [-sf] source_filename dist_filename
 -s ：默认是实体链接，加 -s 为符号链接
 -f ：如果目标文件存在时，先删除目标文件
+
 ```
 
 ### 1. 实体链接
@@ -307,6 +315,7 @@ ln /etc/crontab .
 ll -i /etc/crontab crontab
 34474855 -rw-r--r--. 2 root root 451 Jun 10 2014 crontab
 34474855 -rw-r--r--. 2 root root 451 Jun 10 2014 /etc/crontab
+
 ```
 
 ### 2. 符号链接
@@ -323,6 +332,7 @@ ll -i /etc/crontab crontab
 ll -i /etc/crontab /root/crontab2
 34474855 -rw-r--r--. 2 root root 451 Jun 10 2014 /etc/crontab
 53745909 lrwxrwxrwx. 1 root root 12 Jun 23 22:31 /root/crontab2 -> /etc/crontab
+
 ```
 
 ## 获取文件内容
@@ -334,6 +344,7 @@ ll -i /etc/crontab /root/crontab2
 ```html
 cat [-AbEnTv] filename
 -n ：打印出行号，连同空白行也会有行号，-b 不会
+
 ```
 
 2. tac
@@ -355,6 +366,7 @@ cat [-AbEnTv] filename
 ```html
 head [-n number] filename
 -n ：后面接数字，代表显示几行的意思
+
 ```
 
 6. tail
@@ -374,6 +386,7 @@ head [-n number] filename
 ```html
  which [-a] command
 -a ：将所有指令列出，而不是只列第一个
+
 ```
 
 2. whereis
@@ -382,6 +395,7 @@ head [-n number] filename
 
 ```html
 whereis [-bmsu] dirname/filename
+
 ```
 
 3. locate
@@ -393,6 +407,7 @@ locate 使用 /var/lib/mlocate/ 这个数据库来进行搜索，它存储在内
 ```html
 locate [-ir] keyword
 -r：正则表达式
+
 ```
 
 4. find
@@ -402,6 +417,7 @@ locate [-ir] keyword
 ```html
 find [basedir] [option]
 example: find . -name "shadow*"
+
 ```
 
 **① 与时间有关的选项** 
@@ -411,11 +427,13 @@ example: find . -name "shadow*"
 -mtime +n ：列出在 n 天之前 (不含 n 天本身) 修改过内容的文件
 -mtime -n ：列出在 n 天之内 (含 n 天本身) 修改过内容的文件
 -newer file ： 列出比 file 更新的文件
+
 ```
 
 +4、4 和 -4 的指示的时间范围如下：
 
 <div align="center"> <img src="pics/658fc5e7-79c0-4247-9445-d69bf194c539.png" width=""/> </div><br>
+
 **② 与文件拥有者和所属群组有关的选项** 
 
 ```html
@@ -425,6 +443,7 @@ example: find . -name "shadow*"
 -group name
 -nouser ：搜索拥有者不存在 /etc/passwd 的文件
 -nogroup：搜索所属群组不存在于 /etc/group 的文件
+
 ```
 
 **③ 与文件权限和名称有关的选项** 
@@ -436,6 +455,7 @@ example: find . -name "shadow*"
 -perm mode  ：搜索权限等于 mode 的文件
 -perm -mode ：搜索权限包含 mode 的文件
 -perm /mode ：搜索权限包含任一 mode 的文件
+
 ```
 
 # 进程管理
@@ -450,18 +470,21 @@ example: find . -name "shadow*"
 
 ```sh
 ps -l
+
 ```
 
 示例二：查看系统所有进程
 
 ```sh
 ps aux
+
 ```
 
 示例三：查看特定的进程
 
 ```sh
 ps aux | grep threadx
+
 ```
 
 2. pstree
@@ -472,6 +495,7 @@ ps aux | grep threadx
 
 ```sh
 pstree -A
+
 ```
 
 3. top
@@ -482,30 +506,34 @@ pstree -A
 
 ```sh
 top -d 2
+
 ```
 
 4. netstat
 
-查看占用端口的进程，可以查看TCP连接数，还有网络情况
+查看占用端口的进程
 
 示例：查看特定端口的进程
 
 ```sh
 netstat -anp | grep port
+
 ```
 
 ## 进程状态
 
-| 状态 | 说明 |
-| :---: | --- |
-| R | running or runnable (on run queue)<br>正在执行或者可执行，此时进程位于执行队列中。|
-| D | uninterruptible sleep (usually I/O)<br>不可中断阻塞，通常为 IO 阻塞。 |
-| S | interruptible sleep (waiting for an event to complete) <br> 可中断阻塞，此时进程正在等待某个事件完成。|
-| Z | zombie (terminated but not reaped by its parent)<br>僵死，进程已经终止但是不可被其父进程获取信息。|
-| T | stopped (either by a job control signal or because it is being traced) <br> 结束，进程既可以被作业控制信号结束，也可能是正在被追踪。|
+| 状态 | 说明                                                         |
+| :--: | ------------------------------------------------------------ |
+|  R   | running or runnable (on run queue)<br>正在执行或者可执行，此时进程位于执行队列中。 |
+|  D   | uninterruptible sleep (usually I/O)<br>不可中断阻塞，通常为 IO 阻塞。 |
+|  S   | interruptible sleep (waiting for an event to complete) <br> 可中断阻塞，此时进程正在等待某个事件完成。 |
+|  Z   | zombie (terminated but not reaped by its parent)<br>僵死，进程已经终止但是不可被其父进程获取信息。 |
+|  T   | stopped (either by a job control signal or because it is being traced) <br> 结束，进程既可以被作业控制信号结束，也可能是正在被追踪。 |
+
 <br>
 
 <div align="center"> <img src="pics/2bab4127-3e7d-48cc-914e-436be859fb05.png" width="490px"/> </div><br>
+
 ## SIGCHLD
 
 当一个子进程改变了它的状态时（停止运行，继续运行或者退出），有两件事会发生在父进程中：
@@ -518,10 +546,12 @@ netstat -anp | grep port
 在子进程退出时，它的进程描述符不会立即释放，这是为了让父进程得到子进程信息，父进程通过 wait() 和 waitpid() 来获得一个已经退出的子进程的信息。
 
 <div align="center"> <!-- <img src="pics/flow.png" width=""/> --> </div><br>
+
 ## wait()
 
 ```c
 pid_t wait(int *status)
+
 ```
 
 父进程调用 wait() 会一直阻塞，直到收到一个子进程退出的 SIGCHLD 信号，之后 wait() 函数会销毁子进程并返回。
@@ -534,6 +564,7 @@ pid_t wait(int *status)
 
 ```c
 pid_t waitpid(pid_t pid, int *status, int options)
+
 ```
 
 作用和 wait() 完全相同，但是多了两个可由用户控制的参数 pid 和 options。
@@ -554,21 +585,13 @@ options 参数主要有 WNOHANG 和 WUNTRACED 两个选项，WNOHANG 可以使 w
 
 一个子进程的进程描述符在子进程退出时不会释放，只有当父进程通过 wait() 或 waitpid() 获取了子进程信息后才会释放。如果子进程退出，而父进程并没有调用 wait() 或 waitpid()，那么子进程的进程描述符仍然保存在系统中，这种进程称之为僵尸进程。（**可以理解为尸位素餐**）
 
-**解决方法一：wait/waitpid函数：pid_t wait(int *status)**
+僵尸进程通过 ps 命令显示出来的状态为 Z（zombie）。
 
-​        wait函数就是用来应对这种情况的，父进程在调用wait函数之后就可以将自己阻塞，由wait自动分析是否当前进程的某个子进程已经退出，如果让它找到了这样一个已经变成僵尸的子进程，wait就会收集这个子进程的信息，并把它彻底销毁后返回；如果没有找到这样一个子进程，wait就会一直阻塞在这里，直到有一个出现为止。其中的参数status用来保存被收集进程退出时的一些状态，它是一个指向int类型的指针。但如果我们对这个子进程是如何死掉的毫不在意，只想把这个僵尸进程消灭掉，（事实上绝大多数情况下，我们都会这样想），我们就可以设定这个参数为NULL，就象下面这样：
-pid = wait(NULL);
-在原代码中的父进程块中也只需要添加 wait（NULL），再运行的时候就会发现僵死进程已经被处理掉了。但是，这么做的缺点也很明显。在阻塞的过程中，父进程停止了自己的运行。在实际应用中我们不可能为了处理一个僵死进程而令父进程一直wait。并且一个wait函数只能处理一个僵死进程，作用十分有限。
+系统所能使用的进程号是有限的，如果产生大量僵尸进程，将因为没有可用的进程号而导致系统不能产生新的进程。
 
-**解决方法二：将父进程中对SIGCHLD信号的处理函数设为SIG_IGN（忽略）**
+要消灭系统中大量的僵尸进程，只需要将其父进程杀死，此时僵尸进程就会变成孤儿进程，从而被 init 进程所收养，这样 init 进程就会释放所有的僵尸进程所占有的资源，从而结束僵尸进程。
 
-   这里使用到了信号，需要信号的头文件：signal.h.同样，只需要在父进程块中加入一行代码：signal（SIGCHLD,SIG_IGN）;，就可以不产生僵死进程了。调用这个signal函数就定义了父进程对子进程结束后返回的SIGCHLD信号的响应方式：忽略。
-
- **解决方法三：让僵尸进程成为孤儿进程，由init进程回收；(手动杀死父进程) **
-
-signal(SIGCHLD, SIG_IGN); 忽略SIGCHLD信号，这是一个常用于提升并发服务器性能的技巧。因为并发服务器常常fork很多子进程，子进程终结之后需要服务器进程去wait清理资源。如果将此信号的处理方式设置为忽略，可让内核把僵尸进程转交给init进程去处理，省去了大量僵尸进用系统资源。
-
-[【技术篇】僵尸进程的产生和处理方法](https://blog.csdn.net/xing1584114471/article/details/90479801)
+# 常用重要命令
 
 ## 查看内存、磁盘的命令
 
@@ -585,8 +608,6 @@ signal(SIGCHLD, SIG_IGN); 忽略SIGCHLD信号，这是一个常用于提升并�
 ​	netstat  -anp  |grep   端口号
 ​		LINUX中如何查看某个端口是否被占用
 
-# 常用命令
-
 ## vim
 
 [vim常用命令总结 （转)](https://www.cnblogs.com/yangjig/p/6014198.html)
@@ -598,6 +619,7 @@ signal(SIGCHLD, SIG_IGN); 忽略SIGCHLD信号，这是一个常用于提升并�
 - 指令列模式（Bottom-line mode）：按下 ":" 按键之后进入，用于保存退出等操作。
 
 <div align="center"> <img src="pics/b5e9fa4d-78d3-4176-8273-756d970742c7.png" width="500"/> </div><br>
+
 在指令列模式下，有以下命令用于离开或者保存文件。
 
 | 命令 |                             作用                             |
@@ -699,11 +721,11 @@ find -type f -name '*.php'|xargs grep 'GroupRecord'
 
 ## select，poll
 
-1、poll本质上和select没有区别，它将用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态，如果设备没有就绪则在设备等待队列中加入一项并继续遍历，如果遍历完所有fd后没有发现就绪设备，则挂起当前进程，直到设备就绪或者主动超时，被唤醒后它又要再次遍历fd。这个过程经历了多次无谓的遍历。
+1、poll本质上和select没有区别，它将用户传入的数组**拷贝**到内核空间，然后查询每个fd对应的设备状态，如果设备没有就绪则在设备等待队列中加入一项并继续遍历，如果遍历完所有fd后没有发现就绪设备，则挂起当前进程，直到设备就绪或者主动超时，被唤醒后它又要再次**遍历fd**。这个过程经历了多次无谓的遍历。
 
-2、select文件描述符fd使用数组存储，数量有限，poll使用链表存储，数量没有限制
+2、select文件描述符fd使用**数组**存储，数量有限，poll使用**链表**存储，数量没有限制
 
-3、需要复制和遍历
+3、需要**拷贝**和**遍历**
 
 4、水平触发：如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。
 
@@ -711,16 +733,21 @@ find -type f -name '*.php'|xargs grep 'GroupRecord'
 
 1、边缘触发：它只告诉进程哪些fd刚刚变为就需态，并且只会通知一次。
 
-2、mmap：内核和用户态共享数据，减少复制开销
+2、**mmap**：内核和用户态共享数据，减少复制开销
 
-3、红黑树：红黑树将存储epoll所监听的套接字。上面mmap出来的内存如何保存epoll所监听的套接字，必然也得有一套数据结构，epoll在实现上采用红黑树去存储所有套接字，当添加或者删除一个套接字时（epoll_ctl），都在红黑树上去处理，红黑树本身插入和删除性能比较好，时间复杂度O(logN)。
+3、**红黑树**：红黑树将存储epoll所监听的套接字。上面mmap出来的内存如何保存epoll所监听的套接字，必然也得有一套数据结构，epoll在实现上采用红黑树去存储所有套接字，当添加或者删除一个套接字时（epoll_ctl），都在红黑树上去处理，红黑树本身插入和删除性能比较好，时间复杂度O(logN)。
 
-4、双向链表（就绪队列）：epoll使用“事件”的就绪通知方式，通过epoll_ctl注册fd，一旦该fd就绪，就会将事件加入就绪链表，epoll_wait只用查询就绪链表便可以收到通知。
+4、**双向链表（就绪队列）**：epoll使用“事件”的就绪通知方式，通过epoll_ctl注册fd，一旦该fd就绪，就会将事件加入就绪链表，epoll_wait只用查询就绪链表便可以收到通知。
 
 **epoll的重要函数**
 			新建epoll描述符==epoll_create()
 			epoll_ctrl(epoll描述符，添加或者删除所有待监控的连接)
 			返回的活跃连接 ==epoll_wait（ epoll描述符 ）
+	链接
+		[select、poll、epoll之间的区别总结](https://www.cnblogs.com/jokezl/p/10140802.html)
+		[mmap](https://blog.csdn.net/qq_33611327/article/details/81738195)
+		[select、poll、epoll之间的区别总结](https://www.cnblogs.com/Anker/p/3265058.html)
+		[Linux下的I/O复用与epoll详解](https://www.cnblogs.com/lojunren/p/3856290.html)
 
 # 压缩与打包
 
@@ -759,6 +786,7 @@ $ gzip [-cdtv#] filename
 -t ：检验压缩文件是否出错
 -v ：显示压缩比等信息
 -# ： # 为数字的意思，代表压缩等级，数字越大压缩比越高，默认为 6
+
 ```
 
 2. bzip2
@@ -770,6 +798,7 @@ $ gzip [-cdtv#] filename
 ```html
 $ bzip2 [-cdkzv#] filename
 -k ：保留源文件
+
 ```
 
 3. xz
@@ -782,6 +811,7 @@ $ bzip2 [-cdkzv#] filename
 
 ```html
 $ xz [-dtlkc#] filename
+
 ```
 
 ## 打包
@@ -801,6 +831,7 @@ $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
 -v ：在压缩/解压缩的过程中，显示正在处理的文件名；
 -f : filename：要处理的文件；
 -C 目录 ： 在特定目录解压缩。
+
 ```
 
 | 使用方式 | 命令                                                  |
